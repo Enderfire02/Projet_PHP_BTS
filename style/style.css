@@ -1,10 +1,12 @@
-*{
+* {
 
     font-family: 'M PLUS 1', sans-serif;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 * {
     box-sizing: border-box;
 }
@@ -21,65 +23,70 @@ body {
     position: relative;
 }
 
-.nav > .nav-header {
+.nav>.nav-header {
     display: inline;
 }
 
-.nav > .nav-header > .nav-title {
+.nav>.nav-header>.nav-title {
     display: inline-block;
     font-size: 22px;
     color: #fff;
     padding: 10px 10px 10px 10px;
 }
 
-.nav > .nav-btn {
+.nav>.nav-btn {
     display: none;
 }
 
-.nav > .nav-links {
+.nav>.nav-links {
     display: inline;
     float: right;
     font-size: 18px;
 }
 
-.nav > .nav-links > a {
+.nav>.nav-links>a {
     display: inline-block;
     padding: 13px 10px 13px 10px;
     text-decoration: none;
     color: #efefef;
 }
 
-.nav > .nav-links > a:hover {
+.nav>.nav-links>a:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.nav > #nav-check {
+.nav>#nav-check {
     display: none;
 }
 
 @media (max-width:600px) {
-    .nav > .nav-btn {
+    .nav>.nav-btn {
         display: inline-block;
         position: absolute;
         right: 0px;
         top: 0px;
     }
-    .nav > .nav-btn > label {
+
+    .nav>.nav-btn>label {
         display: inline-block;
         width: 50px;
         height: 50px;
         padding: 13px;
     }
-    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+
+    .nav>.nav-btn>label:hover,
+    .nav #nav-check:checked~.nav-btn>label {
         background-color: rgba(0, 0, 0, 0.3);
     }
-    .nav > .nav-btn > label > span {
+
+    .nav>.nav-btn>label>span {
         display: block;
         width: 25px;
         height: 10px;
         border-top: 2px solid #eee;
     }
-    .nav > .nav-links {
+
+    .nav>.nav-links {
         position: absolute;
         display: block;
         width: 100%;
@@ -90,39 +97,49 @@ body {
         top: 50px;
         left: 0px;
     }
-    .nav > .nav-links > a {
+
+    .nav>.nav-links>a {
         display: block;
         width: 100%;
     }
-    .nav > #nav-check:not(:checked) ~ .nav-links {
+
+    .nav>#nav-check:not(:checked)~.nav-links {
         height: 0px;
     }
-    .nav > #nav-check:checked ~ .nav-links {
+
+    .nav>#nav-check:checked~.nav-links {
         height: calc(100vh - 50px);
         overflow-y: auto;
     }
 }
-.img{
+
+.img {
     background-color: #7b8aff;
-    padding-top: 400px ;
+    padding-top: 400px;
 }
 
 
-footer{
-    background-color:#4d4d4d;
+footer {
+    background-color: #4d4d4d;
     text-align: center;
-    color:white;
+    color: white;
     padding-top: 50px;
     padding-bottom: 50px;
     margin-top: fill;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 50px;
+    height: 50px;
 }
+
 main .card img {
     height: 400px;
     width: 284px;
 
 }
 
-.card{
+.card {
 
     background-color: #FFFFFF;
     border: 1px solid black;
@@ -131,48 +148,45 @@ main .card img {
     margin-bottom: 20px;
 
 }
-.card-link{
+
+.card-link {
     background-color: black;
     justify-content: center;
     color: white;
     border-radius: 3px;
 
 }
-.Prix{
+
+.Prix {
     font-weight: bold;
 }
-h3{
+
+h3 {
     text-align: center;
 }
-.card-title{
+
+.card-title {
     text-align: center;
 }
-main{
+
+main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
 }
-\\gest compte
 
-.formualireDeCreation{
+\\gest compte .formualireDeCreation {
     margin: 10px 10px 20px 20px;
 }
 
-.btn btn-primary{
-
+.login {
+    display: flex;
+    flex-direction: column;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.loginMain {
+    min-height: 100%;
+    margin-top: 250px;
+    position: relative;
+}
