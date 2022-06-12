@@ -30,7 +30,7 @@ $page = (isset($_GET['page'])) ? htmlspecialchars($_GET['page']): 'login';
         require './pages/articleList.php';
     } elseif ($page === 'account') {
         // compte client
-        require './pages/gestCompte.php.php';
+        require './pages/gestCompte.php';
     } elseif ($page === 'checkout') {
         // panier
         require './pages/panier.php';
