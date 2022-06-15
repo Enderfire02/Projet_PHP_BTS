@@ -18,7 +18,7 @@ class Bd{
 
     public function BDqueryAssos($sql, $assos){
         $statement = $this->dbh->prepare($sql);
-         $statement->execute($assos);
+        $statement->execute($assos);
         $retour = $statement->fetchAll(PDO::FETCH_ASSOC);
         $nmb = $statement->rowCount();
         return array($retour, $nmb); 

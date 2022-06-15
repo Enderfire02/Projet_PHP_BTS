@@ -2,7 +2,14 @@
 require_once './Database/connect.php';
 $bd = new Bd();
 
+require './functions/notification.php';
+$notification = new Notification();
+
 $page = (isset($_GET['page'])) ? htmlspecialchars($_GET['page']): 'login';
+
+    if(!session_id()){
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +44,15 @@ $page = (isset($_GET['page'])) ? htmlspecialchars($_GET['page']): 'login';
     } elseif ($page === 'login') {
         // page de connextion
         require './pages/connex.php';
+    }elseif ($page === 'newAcc') {
+        // page de connextion
+        require './pages/newAcc.php';
+    }elseif ($page === 'addProduct'){
+        require './functions/addProduct.php';
+    }elseif ($page === 'removeProduct'){
+        require './functions/delProduct.php';
     }
+    
     ?>
 <footer>
     <p>copyright 2022 Cyrus Valette</p>

@@ -1,8 +1,23 @@
-<main>
+<main class="container">
     <?php
-$articles = [];
+    $articles = [];
+    
 
-$statement = "select * from "
+    // recupère l'id du produit
+    $ids = array_keys($_SESSION['panier']);
+    var_dump($_SESSION['panier'], $ids);
+    $assos = array(
+        'identifiant' => $_SESSION['user']
+    );
+    // si le tableau des id est vide  j'envoie un tableau dans $articles
+    if (empty($ids)) {
+        
+        $articles = array();
+    } else {
+        list($articles, $nmb) = $bd->BDqueryAssos('SELECT * FROM projet_php.realise, projet_php.commande, projet_php.composee, projet_php.articles WHERE realise.ID_Comm = commande.ID_Comm AND commande.ID_Comm = composee.ID_Comm AND composee.ID_Art = articles.ID_Art AND realise.ID_Cli = :identifiant', $assos); 
+        var_dump($assos);  
+    }
+
     ?>
     <h1>Vos articles</h1>
     <table class="table tablePannier">
@@ -17,25 +32,27 @@ $statement = "select * from "
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($articles as $article): ?>
-            <tr>
-                <th scope="row"><img src=""<?php echo $article['id'] ?>" alt="image panier"></th>
-                <th><?php echo $article['nom'] ?></th>
-                <th><?php echo $article['description'] ?></th>
-                <th><?php echo $article['prix'] ?> €</th>
-                <th><?php echo $_SESSION['panier'][$article['id']] ?>
-                    <a class="btn btn-outline-success btn-sm" href="/tp/projet-Site-php-sem1/?page=addpanier&id=<?php echo $article['id'] ?>">+</a>
-                </th>
-                <th>
-                    <a class="btn btn-secondary btn-sm" href="/tp/projet-Site-php-sem1/?page=removepanier&del=<?php echo $article['id'] ?>">supprimer du pannier</a>
-                </th>
-            </tr>
-            <?php endforeach ?>
+        
+            <?php 
+            $i = 1;
+            foreach ($articles as $article) : ?>
+                <tr>
+                    <th scope="row"><img src="./asset/img/<?php echo $article['Img_Art']?>" alt="image panier" class="imgPanier"></th>
+                    <th><?php echo $article['Nom_Art'] ?></th>
+                    <th><?php echo $article['Desc_Art'] ?></th>
+                    <th><?php echo $article['Prix_Art'] ?> €</th>
+                    <th><?php echo $_SESSION['panier'][$i] ?>
+                        <a class="btn btn-outline-success btn-sm" href="?page=addProduct&id=<?php echo $article['ID_Art'] ?>">+</a>
+                    </th>
+                    <th>
+                        <a class="btn btn-secondary btn-sm" href="?page=removeProduct&del=<?php echo $article['ID_Art'] ?>">supprimer du pannier</a>
+                    </th>
+                </tr>
+            <?php $i++; endforeach ?>
         </tbody>
     </table>
     <ul class="list-group">
         <li class="list-group-item">Nmb article : <?php echo array_sum($_SESSION['panier']); ?></li>
-        <li class="list-group-item">Prix total : <?php echo $PTotal ?> €</li>
         <button type="button" class="btn btn-primary btn-sm">Valider les articles</button>
     </ul>
 </main>
