@@ -8,16 +8,11 @@ if (isset($_POST['submit'])) {
         
         $assos = array('identifiant' => $identifiant);
         list($retour, $nmb) = $bd->BDqueryAssos("SELECT * FROM projet_php.client WHERE Email_Cli = :identifiant ", $assos);
-        
-        // var_dump($retour);
-        // var_dump($nmb);
-        
+      
         if ($nmb === 1) {
             if ($password === $retour['0']['Mdp_Cli']) {
                 $_SESSION['user'] = $retour['0']['ID_Cli'];
                 header("Location: ?page=productlist");
-                // echo'fff';
-                var_dump($_SESSION);
                 $_SESSION['erreur']['login'] = false; 
                 exit;
             } else {
